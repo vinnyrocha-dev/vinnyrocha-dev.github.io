@@ -213,12 +213,43 @@
     <section class="section" id="projetos">
       <div class="container">
         <p class="label reveal">04 · Projetos</p>
-        <h2 class="reveal">O que eu já <span class="accent">construí.</span></h2>
+        <h2 class="reveal">Direto do meu <span class="accent">GitHub.</span></h2>
+        <p class="section-sub reveal">Repositórios praticando lógica, POO e organização em camadas. Filtre por linguagem.</p>
 
-        <!-- Filtro gerado automaticamente pelo script.js -->
-        <div class="filters reveal" id="filtros" role="group" aria-label="Filtrar projetos por linguagem"></div>
-        <div class="projects" id="lista-projetos" aria-live="polite">
+        <!-- Barra de filtros: os botões são criados pelo script.js a partir das linguagens dos projetos -->
+        <div class="filter-bar reveal" id="filterBar" role="group" aria-label="Filtrar projetos por linguagem"></div>
+
+        <!-- Grid de projetos: os cards são criados pelo script.js -->
+        <div class="project-grid" id="projectGrid" aria-live="polite">
           <p class="muted">Carregando projetos…</p>
+        </div>
+
+        <!-- Painel de estatísticas do GitHub -->
+        <div class="gh-panel reveal">
+          <div class="gh-head">
+            <h3>Estatísticas do GitHub <span class="badge-live" data-live hidden>ao vivo</span></h3>
+            <p>Atualizado automaticamente a partir do perfil <a href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener">@vinnyrocha-dev</a></p>
+          </div>
+
+          <ul class="gh-stats">
+            <li><span class="gh-num" data-gh="public_repos">…</span><span class="gh-label">repositórios</span></li>
+            <li><span class="gh-num" data-gh="followers">…</span><span class="gh-label">seguidores</span></li>
+            <li><span class="gh-num" data-gh="following">…</span><span class="gh-label">seguindo</span></li>
+            <li><span class="gh-num" data-gh="public_gists">…</span><span class="gh-label">gists</span></li>
+          </ul>
+
+          <!-- Imagens do github-readme-stats. As cores (4D8DFF / EDF1F7) são as do tema escuro.
+               O repositório do próprio site fica fora do gráfico de linguagens (exclude_repo),
+               senão o HTML/CSS/JS do portfólio apareceria como linguagem principal.
+               Se o serviço estiver fora do ar, o script.js esconde a imagem que falhar. -->
+          <div class="gh-cards">
+            <img class="gh-card-img" loading="lazy" width="495" height="195"
+                 src="https://github-readme-stats.vercel.app/api?username=vinnyrocha-dev&amp;show_icons=true&amp;theme=transparent&amp;title_color=4D8DFF&amp;icon_color=4D8DFF&amp;text_color=EDF1F7&amp;hide_border=true"
+                 alt="Estatísticas do GitHub de vinnyrocha-dev: estrelas, commits, pull requests e issues">
+            <img class="gh-card-img" loading="lazy" width="350" height="165"
+                 src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinnyrocha-dev&amp;exclude_repo=vinnyrocha-dev.github.io&amp;layout=compact&amp;theme=transparent&amp;title_color=4D8DFF&amp;text_color=EDF1F7&amp;hide_border=true"
+                 alt="Linguagens mais usadas nos repositórios de vinnyrocha-dev">
+          </div>
         </div>
       </div>
     </section>
@@ -226,15 +257,17 @@
     <!-- =============== 8. CONTATO =============== -->
     <section class="section" id="contato">
       <div class="container">
-        <p class="label reveal">05 · Contato</p>
-        <h2 class="reveal">Vamos <span class="accent">conversar?</span></h2>
-        <p class="section-sub reveal">Estou em busca do meu primeiro estágio. Se tiver uma vaga ou quiser trocar uma ideia, me chame.</p>
+        <div class="contact-box reveal">
+          <p class="label">05 · Contato</p>
+          <h2>Vamos <span class="accent">conversar?</span></h2>
+          <p class="contact-text">Aberto a oportunidades de estágio em desenvolvimento. Confira meus projetos ou entre em contato pelas redes abaixo.</p>
 
-        <ul class="contact-list">
-          <li class="reveal"><a href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener"><span class="label">GitHub</span><span class="contact-val">vinnyrocha-dev</span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li class="reveal"><a href="https://www.linkedin.com/in/vinipache/" target="_blank" rel="noopener"><span class="label">LinkedIn</span><span class="contact-val">in/vinipache</span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li class="reveal"><a href="mailto:viniciusgp45@gmail.com"><span class="label">E-mail</span><span class="contact-val">viniciusgp45@gmail.com</span><span class="arrow" aria-hidden="true">→</span></a></li>
-        </ul>
+          <div class="contact-btns">
+            <a class="btn btn-primary" href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener">GitHub →</a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/vinipache/" target="_blank" rel="noopener">LinkedIn →</a>
+            <a class="btn btn-outline" href="mailto:viniciusgp45@gmail.com">E-mail →</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>

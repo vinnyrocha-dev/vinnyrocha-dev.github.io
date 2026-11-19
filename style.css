@@ -431,70 +431,134 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 .chips li:hover { border-color: var(--accent); color: var(--accent); }
 .chips-dashed li { border-style: dashed; color: var(--muted); }
 
-/* Projetos */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 24px; }
+/* Projetos: barra de filtros (pílulas) */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 28px; }
 .filter-btn {
   min-height: 40px;
-  padding: 0 16px;
+  padding: 0 18px;
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--muted);
   background: transparent;
   border: 1px solid var(--border);
-  border-radius: var(--radius-btn);
+  border-radius: 999px;
   cursor: pointer;
   transition: border-color .25s, color .25s, background-color .25s;
 }
 .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-.filter-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+/* Botão ativo: borda e texto no accent, fundo suave */
+.filter-btn[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), .12);
+}
 
-.projects { display: grid; gap: 16px; }
-.project { display: flex; flex-direction: column; gap: 12px; }
-.project h3 { font-family: var(--font-mono); font-size: 16px; font-weight: 500; word-break: break-word; }
-.project p { flex: 1; }
-.project-meta {
+/* Projetos: grid (1 coluna no celular, 2 no tablet, 3 no desktop) */
+.project-grid { display: grid; gap: 16px; }
+.project-card {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 20px 40px -28px rgba(0, 0, 0, .6);
+  transition: border-color .3s, transform .3s, opacity .3s;
+}
+.project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.project-card.is-hidden { opacity: 0; transform: scale(.97); }
+.project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.project-top h3 { font-family: var(--font-body); font-weight: 500; font-size: 1rem; word-break: break-word; }
+.lang-tag {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+}
+.project-card p { margin: 0; flex: 1; color: var(--muted); font-size: .95rem; }
+.project-link {
+  align-self: flex-start;
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--muted);
+  color: var(--text);
+  padding: 6px 0;
+  transition: color .25s;
 }
-.lang { display: inline-flex; align-items: center; gap: 8px; }
-.lang::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--lang-color, var(--accent));
-}
-.project-link { color: var(--accent); padding: 8px 0; transition: color .25s; }
-.project-link:hover { color: var(--accent-hover); }
+.project-link:hover { color: var(--accent); }
 
-/* Contato */
-.contact-list { border-top: 1px solid var(--border); max-width: 720px; }
-.contact-list li { border-bottom: 1px solid var(--border); }
-.contact-list a {
-  display: grid;
-  grid-template-columns: 1fr auto;
+/* Painel de estatísticas do GitHub */
+.gh-panel {
+  margin-top: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 20px;
+}
+.gh-head { text-align: center; margin-bottom: 24px; }
+.gh-head h3 {
+  display: inline-flex;
   align-items: center;
-  gap: 4px 16px;
-  padding: 20px 4px;
-  transition: color .25s, padding-left .25s;
+  gap: 10px;
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
 }
-.contact-list .label { margin: 0; color: var(--muted); grid-column: 1; }
-.contact-val { font-size: 1.05rem; grid-column: 1; word-break: break-all; }
-.arrow {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  font-family: var(--font-mono);
-  font-size: 1.4rem;
-  color: var(--accent);
-  transition: transform .25s;
+.gh-head .badge-live { position: static; }
+.gh-head p { margin: 6px 0 0; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.gh-head a { color: var(--accent); }
+.gh-head a:hover { color: var(--accent-hover); }
+.gh-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.gh-stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
 }
-.contact-list a:hover { color: var(--accent); padding-left: 10px; }
-.contact-list a:hover .arrow { transform: translateX(4px); }
+.gh-num { font-family: var(--font-title); font-weight: 700; font-size: 1.8rem; line-height: 1; }
+.gh-label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.06em; color: var(--muted); }
+.gh-cards { display: grid; gap: 12px; margin-top: 16px; }
+.gh-card-img {
+  width: 100%;
+  height: auto;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+/* Contato: caixa centralizada com brilho no canto */
+.contact-box {
+  position: relative;
+  overflow: hidden;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.contact-box::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), .3), transparent 70%);
+  pointer-events: none;
+}
+.contact-box > * { position: relative; }
+.contact-text { color: var(--muted); max-width: 30rem; margin: 0 auto 28px; }
+.contact-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 
 /* ---------- 8. Botão flutuante do WhatsApp ---------- */
 .whatsapp-fab {
@@ -531,10 +595,10 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   transition: opacity .6s ease, transform .6s ease;
   transition-delay: var(--delay, 0s);
 }
-.reveal.visible { opacity: 1; transform: none; }
+.reveal.in-view { opacity: 1; transform: none; }
 /* Cards com reveal mantêm o hover de 0.3s */
-.card.reveal.visible { transition: opacity .6s ease, transform .3s ease, border-color .3s; }
-.card.reveal.visible:hover { transform: translateY(-4px); }
+.card.reveal.in-view { transition: opacity .6s ease, transform .3s ease, border-color .3s; }
+.card.reveal.in-view:hover { transform: translateY(-4px); }
 /* Sem JavaScript, tudo aparece normalmente */
 .no-js .reveal { opacity: 1; transform: none; }
 
@@ -550,7 +614,9 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 /* ---------- 12. Responsivo (mobile first) ---------- */
 @media (min-width: 640px) {
   .cards-3,
-  .projects { grid-template-columns: repeat(2, 1fr); }
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .gh-stats { grid-template-columns: repeat(4, 1fr); }
+  .contact-box { padding: 56px 48px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -574,7 +640,9 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   .photo-wrap { order: 0; width: 340px; }
 
   .sobre-grid { grid-template-columns: 1.5fr 1fr; gap: 64px; }
-  .cards-3 { grid-template-columns: repeat(3, 1fr); }
+  .cards-3,
+  .project-grid { grid-template-columns: repeat(3, 1fr); }
+  .gh-cards { grid-template-columns: 1.4fr 1fr; align-items: start; }
   .skills { grid-template-columns: repeat(3, 1fr); }
   .section { padding: 112px 0; }
 }
