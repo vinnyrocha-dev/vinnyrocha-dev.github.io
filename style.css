@@ -26,6 +26,9 @@
   /* Borda dos botões: branco quase transparente, mistura com qualquer fundo */
   --btn-border: oklch(100% 0 0 / .14);
 
+  /* Barra de rolagem: azul mais escuro que o accent, para não chamar atenção demais */
+  --scroll-thumb: oklch(42% 0.12 261);
+
   --font-title: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -49,6 +52,7 @@
   --accent-hover: oklch(48.8% 0.217 264.4);
   /* No tema claro a borda é preto quase transparente */
   --btn-border: oklch(0% 0 0 / .14);
+  --scroll-thumb: oklch(78% 0.08 262);
   color-scheme: light;
 }
 
@@ -83,8 +87,9 @@ h1, h2 {
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
-h1 { font-size: clamp(2.6rem, 8vw, 4.75rem); }
-h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+/* clamp(mínimo, ideal, máximo): o título cresce e encolhe com a largura da tela */
+h1 { font-size: clamp(2.6rem, 6.2vw, 5rem); }
+h2 { font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 1rem; }
 
 .accent { color: var(--accent); }
 .muted { color: var(--muted); }
@@ -136,16 +141,16 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  padding: 0 22px;
+  padding: 14px 26px; /* o botão é grande pelo espaço interno, não pela letra */
   border-radius: var(--radius-btn);
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: .85rem;
   font-weight: 500;
   /* Borda semitransparente: deixa o fundo aparecer e se mistura com ele */
-  border: 1px solid var(--btn-border);
+  border: 1.25px solid var(--btn-border);
   transition: background-color .25s, border-color .25s, color .25s, transform .25s;
 }
-.btn-primary { background: var(--accent); color: var(--bg); }
+.btn-primary { background: var(--accent); color: var(--bg); font-weight: 600; }
 .btn-primary:hover { background: var(--accent-hover); }
 .btn-outline { background: transparent; color: var(--text); }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
@@ -210,7 +215,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 }
 .logo {
   font-family: var(--font-mono);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
 }
 .nav-actions { display: flex; gap: 2px; }
@@ -232,7 +237,8 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   display: block;
   padding: 12px 0;
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-weight: 400;
+  font-size: .85rem;
   color: var(--muted);
   transition: color .25s;
 }
@@ -284,14 +290,14 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   background: var(--accent);
 }
 .hero-text h1 { margin: 8px 0 20px; }
-.hero-sub { color: var(--muted); font-size: 1.1rem; max-width: 34rem; margin: 0 0 32px; }
+.hero-sub { color: var(--muted); font-weight: 300; font-size: 1.15rem; max-width: 34rem; margin: 0 0 32px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
 .link-cv {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: .78rem;
   color: var(--muted);
-  padding: 8px 0;
+  padding: 11px 0;
   transition: color .25s;
 }
 .link-cv:hover { color: var(--accent); }
@@ -385,7 +391,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 
 /* Sobre */
 .sobre-grid { display: grid; gap: 40px; margin-top: 24px; }
-.sobre-text p { color: var(--muted); margin: 0 0 1.2rem; max-width: 42rem; }
+.sobre-text p { color: var(--muted); font-weight: 300; margin: 0 0 1.2rem; max-width: 42rem; }
 .stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -449,8 +455,8 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips li {
   font-family: var(--font-mono);
-  font-size: 12.5px;
-  padding: 6px 14px;
+  font-size: .78rem;
+  padding: 7px 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--bg);
@@ -462,10 +468,9 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 /* Projetos: barra de filtros (pílulas) */
 .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 28px; }
 .filter-btn {
-  min-height: 40px;
-  padding: 0 18px;
+  padding: 9px 16px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: .78rem;
   color: var(--muted);
   background: transparent;
   border: 1px solid var(--btn-border);
@@ -650,6 +655,21 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   color: var(--muted);
 }
 
+/* ---------- Barra de rolagem ---------- */
+/* Firefox (só nele: no Chrome novo, scrollbar-color anularia o estilo abaixo) */
+@supports (-moz-appearance: none) {
+  html { scrollbar-color: var(--scroll-thumb) var(--bg); scrollbar-width: thin; }
+}
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar { width: 10px; }                         /* largura da barra */
+::-webkit-scrollbar-track { background: var(--bg); }         /* trilho de fundo */
+::-webkit-scrollbar-thumb {                                  /* a parte que você arrasta */
+  background: var(--scroll-thumb);
+  border-radius: 10px;
+  border: 2px solid var(--bg);                               /* folga em volta: fica mais fina e elegante */
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
 /* ---------- 10. Reveal ao rolar ---------- */
 .reveal {
   opacity: 0;
@@ -704,7 +724,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   .nav-actions { justify-self: end; }
 
   .hero { padding: calc(var(--nav-h) + 88px) 0 96px; }
-  .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 64px; }
+  .hero-grid { grid-template-columns: 1.55fr 1fr; gap: 48px; }
   .photo-wrap { order: 0; width: 340px; }
 
   .sobre-grid { grid-template-columns: 1.5fr 1fr; gap: 64px; }
