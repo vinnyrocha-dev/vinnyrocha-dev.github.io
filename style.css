@@ -415,21 +415,29 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 /* Como trabalho */
 .cards-3 { display: grid; gap: 16px; }
 
-/* Habilidades */
-.skills { display: grid; gap: 32px; margin-top: 32px; }
-.skill-group .label { color: var(--muted); }
+/* Habilidades: 3 cards, cada um com um grupo de pílulas */
+.skills { display: grid; gap: 16px; }
+.skill-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  transition: border-color .3s;
+}
+.skill-group:hover { border-color: var(--accent); }
+.skill-group .label { text-transform: none; margin-bottom: 16px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips li {
   font-family: var(--font-mono);
-  font-size: 13px;
-  padding: 6px 12px;
+  font-size: 12.5px;
+  padding: 6px 14px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-btn);
-  background: var(--surface);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
   transition: border-color .25s, color .25s;
 }
 .chips li:hover { border-color: var(--accent); color: var(--accent); }
-.chips-dashed li { border-style: dashed; color: var(--muted); }
 
 /* Projetos: barra de filtros (pílulas) */
 .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 28px; }
@@ -618,6 +626,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   .gh-stats { grid-template-columns: repeat(4, 1fr); }
   .contact-box { padding: 56px 48px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .skills { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 900px) {
