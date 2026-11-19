@@ -7,14 +7,24 @@
 /* ---------- 1. Variáveis de cor (tema escuro é o padrão) ---------- */
 :root,
 [data-theme="dark"] {
-  --bg: #0A0B10;
-  --surface: #12141A;
-  --border: #1F2633;
-  --text: #EDF1F7;
-  --muted: #9AA3B2;
-  --accent: #4D8DFF;
-  --accent-hover: #7AA9FF;
-  --accent-rgb: 77, 141, 255;
+  /* Cores em OKLCH: L = luminosidade percebida, C = intensidade, H = matiz.
+     Diferente do hex/HSL, o mesmo L parece igualmente claro em qualquer cor. */
+  --bg: oklch(15.1% 0.011 276.2);
+  --surface: oklch(19.2% 0.013 270.7);
+  --border: oklch(26.8% 0.026 262.6);
+  --text: oklch(95.7% 0.009 258.3);
+  --muted: oklch(71.3% 0.024 260.7);
+
+  /* Accent dividido em partes para criar versões transparentes:
+     oklch(var(--accent-l) var(--accent-c) var(--accent-h) / .08) */
+  --accent-l: 65.8%;
+  --accent-c: 0.182;
+  --accent-h: 261;
+  --accent: oklch(var(--accent-l) var(--accent-c) var(--accent-h));
+  --accent-hover: oklch(73.8% 0.135 261.8);
+
+  /* Borda dos botões: branco quase transparente, mistura com qualquer fundo */
+  --btn-border: oklch(100% 0 0 / .14);
 
   --font-title: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
@@ -28,14 +38,17 @@
 
 /* Tema claro (ativado pelo botão da lâmpada) */
 [data-theme="light"] {
-  --bg: #F7F8FA;
-  --surface: #FFFFFF;
-  --border: #DDE2EA;
-  --text: #0F1420;
-  --muted: #5B6577;
-  --accent: #2563EB;
-  --accent-hover: #1D4ED8;
-  --accent-rgb: 37, 99, 235;
+  --bg: oklch(97.9% 0.003 264.5);
+  --surface: oklch(100% 0 0);
+  --border: oklch(91.1% 0.012 259.8);
+  --text: oklch(19.2% 0.026 266.6);
+  --muted: oklch(50.5% 0.031 262.2);
+  --accent-l: 54.6%;
+  --accent-c: 0.215;
+  --accent-h: 262.9;
+  --accent-hover: oklch(48.8% 0.217 264.4);
+  /* No tema claro a borda é preto quase transparente */
+  --btn-border: oklch(0% 0 0 / .14);
   color-scheme: light;
 }
 
@@ -142,12 +155,13 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   font-family: var(--font-mono);
   font-size: 14px;
   font-weight: 500;
-  border: 1px solid transparent;
+  /* Borda semitransparente: deixa o fundo aparecer e se mistura com ele */
+  border: 1px solid var(--btn-border);
   transition: background-color .25s, border-color .25s, color .25s, transform .25s;
 }
 .btn-primary { background: var(--accent); color: var(--bg); }
 .btn-primary:hover { background: var(--accent-hover); }
-.btn-outline { background: transparent; border-color: var(--border); color: var(--text); }
+.btn-outline { background: transparent; color: var(--text); }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
 .icon-btn {
@@ -155,7 +169,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--btn-border);
   border-radius: var(--radius-btn);
   background: transparent;
   color: var(--text);
@@ -254,7 +268,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 55% at 70% 30%, rgba(var(--accent-rgb), .08), transparent 70%);
+  background: radial-gradient(in oklch ellipse 60% 55% at 70% 30%, oklch(var(--accent-l) var(--accent-c) var(--accent-h) / .08), oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0) 70%);
   pointer-events: none;
 }
 .hero-grid {
@@ -299,14 +313,14 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   right: 0;
   top: 8%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background: linear-gradient(in oklch 90deg, oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0), var(--accent), oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0));
   box-shadow: 0 0 12px var(--accent);
   animation: scan 3s ease-in-out infinite;
 }
 .ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px dashed rgba(var(--accent-rgb), .5);
+  border: 1px dashed oklch(var(--accent-l) var(--accent-c) var(--accent-h) / .5);
   animation: spin 20s linear infinite;
 }
 .ring-1 { inset: 4%; }
@@ -448,7 +462,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   font-size: 13px;
   color: var(--muted);
   background: transparent;
-  border: 1px solid var(--border);
+  border: 1px solid var(--btn-border);
   border-radius: 999px;
   cursor: pointer;
   transition: border-color .25s, color .25s, background-color .25s;
@@ -458,7 +472,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
 .filter-btn[aria-pressed="true"] {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(var(--accent-rgb), .12);
+  background: oklch(var(--accent-l) var(--accent-c) var(--accent-h) / .12);
 }
 
 /* Projetos: grid (1 coluna no celular, 2 no tablet, 3 no desktop) */
@@ -471,7 +485,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 24px;
-  box-shadow: 0 20px 40px -28px rgba(0, 0, 0, .6);
+  box-shadow: 0 20px 40px -28px oklch(0% 0 0 / .6);
   transition: border-color .3s, transform .3s, opacity .3s;
 }
 .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
@@ -561,7 +575,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   right: -120px;
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), .3), transparent 70%);
+  background: radial-gradient(in oklch circle, oklch(var(--accent-l) var(--accent-c) var(--accent-h) / .3), oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0) 70%);
   pointer-events: none;
 }
 .contact-box > * { position: relative; }
@@ -581,7 +595,7 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
   border-radius: 50%;
   background: var(--accent);
   color: var(--bg);
-  box-shadow: 0 8px 24px rgba(var(--accent-rgb), .35);
+  box-shadow: 0 8px 24px oklch(var(--accent-l) var(--accent-c) var(--accent-h) / .35);
   transition: background-color .25s, transform .25s;
 }
 .whatsapp-fab:hover { background: var(--accent-hover); transform: translateY(-2px); }
@@ -641,8 +655,11 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
     border: 0;
   }
   .nav-links a { padding: 8px 0; }
-  .nav-inner { justify-content: flex-start; }
-  .nav-links { margin-left: auto; }
+  /* 3 colunas: logo | links no centro | botões. As colunas laterais têm o
+     mesmo tamanho (1fr), então os links ficam exatamente no meio da tela. */
+  .nav-inner { display: grid; grid-template-columns: 1fr auto 1fr; }
+  .nav-links { justify-self: center; }
+  .nav-actions { justify-self: end; }
 
   .hero { padding: calc(var(--nav-h) + 88px) 0 96px; }
   .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 64px; }
