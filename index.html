@@ -22,7 +22,7 @@
   <!-- ===== Fontes (Google Fonts) ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -45,25 +45,18 @@
 
       <ul class="nav-links" id="menu">
         <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#como-trabalho">Como trabalho</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
 
       <div class="nav-actions">
-        <!-- Atalhos para GitHub e LinkedIn -->
-        <a class="icon-btn icon-plain" href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener" aria-label="GitHub de Vinicius (abre em nova aba)">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
-        </a>
-        <a class="icon-btn icon-plain" href="https://www.linkedin.com/in/vinipache/" target="_blank" rel="noopener" aria-label="LinkedIn de Vinicius (abre em nova aba)">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zm7 0h3.8v1.5h.1c.5-1 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v6.4h-4v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.8h-4z"/></svg>
-        </a>
-        <!-- Botão de tema: mostra a lua no tema escuro e o sol no claro (troca feita pelo CSS) -->
-        <button class="icon-btn icon-plain" id="btn-tema" type="button" aria-label="Alternar para tema claro">
-          <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
-          </svg>
-          <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        <!-- Botão de tema (ícone de lâmpada) -->
+        <button class="icon-btn" id="btn-tema" type="button" aria-label="Alternar para tema claro">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18h6M10 21h4"/>
+            <path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2.2h5c.1-1 .5-1.7 1.1-2.2A6 6 0 0 0 12 3z"/>
           </svg>
         </button>
         <!-- Hambúrguer (só aparece no mobile) -->
@@ -116,7 +109,7 @@
             <p><span class="prompt">$</span> <span class="cmd">cargo --alvo</span></p>
             <p class="out">Estágio em Desenvolvimento Back-End</p>
             <p><span class="prompt">$</span> <span class="cmd">tecnologias --lista</span></p>
-            <p class="out">Java · POO · PostgreSQL · Docker · Git · GitHub</p>
+            <p class="out">Java · POO · Spring Boot · PostgreSQL · Git · GitHub</p>
             <p><span class="prompt">$</span> <span class="cmd">situação</span></p>
             <p class="out">Disponível para estágio · Rio de Janeiro, RJ</p>
             <p><span class="prompt">$</span> <span class="cursor" aria-hidden="true"></span></p>
@@ -128,14 +121,14 @@
     <!-- =============== 4. SOBRE =============== -->
     <section class="section" id="sobre">
       <div class="container">
-        <p class="label reveal">Sobre</p>
+        <p class="label reveal">01 · Sobre</p>
         <h2 class="reveal">Quem está por trás do <span class="accent">código.</span></h2>
 
         <div class="sobre-grid">
           <div class="sobre-text">
             <p class="reveal">Sou <strong>Vinicius Rocha Pacheco</strong>, estudante de Análise e Desenvolvimento de Sistemas com foco em desenvolvimento <strong>Back-End</strong> e aprendizado contínuo. Busco aprimorar minhas habilidades em <strong>Java</strong>, desenvolvimento de <strong>APIs e bancos de dados</strong>, construindo sistemas bem estruturados e crescendo a cada novo projeto. Sempre gostei de mexer em computador e entender como as coisas funcionam por dentro, e foi esse interesse pela lógica que me levou ao <strong>Back-End</strong>.</p>
             <p class="reveal">Meus projetos giram em torno de <strong>Java</strong> e <strong>Programação Orientada a Objetos</strong>, de um sistema de cadastro de clientes com padrão DAO a exercícios de encapsulamento, herança e polimorfismo, sempre praticando lógica, estrutura e organização em camadas. Gosto de entender o problema antes de escrever a primeira linha: divido em partes menores, penso nos possíveis erros e só então implemento.</p>
-            <p class="reveal">No tempo livre, gosto de experimentar: estudar <strong>Docker</strong>, praticar <strong>PostgreSQL</strong> e me aprofundar em <strong>Inteligência Artificial</strong>, com o objetivo de criar soluções inteligentes para pequenos negócios. Para mim, <strong>Back-End</strong> se aprende na prática, construindo, quebrando e melhorando o código a cada versão. Quero levar essa mesma curiosidade para o meu primeiro time.</p>
+            <p class="reveal">No tempo livre, gosto de experimentar: estudar <strong>Spring Boot</strong>, praticar <strong>PostgreSQL</strong> e me aprofundar em <strong>Inteligência Artificial</strong>, com o objetivo de criar soluções inteligentes para pequenos negócios. Para mim, <strong>Back-End</strong> se aprende na prática, construindo, quebrando e melhorando o código a cada versão. Quero levar essa mesma curiosidade para o meu primeiro time.</p>
           </div>
 
           <!-- Números: os 2 primeiros vêm da API pública do GitHub -->
@@ -166,7 +159,7 @@
     <!-- =============== 5. COMO TRABALHO =============== -->
     <section class="section" id="como-trabalho">
       <div class="container">
-        <p class="label reveal">Como trabalho</p>
+        <p class="label reveal">02 · Como trabalho</p>
         <h2 class="reveal">Como eu <span class="accent">trabalho.</span></h2>
         <p class="section-sub reveal">No começo da carreira, mas com hábitos que já fazem diferença em um time de desenvolvimento.</p>
 
@@ -190,9 +183,8 @@
     <!-- =============== 6. HABILIDADES =============== -->
     <section class="section" id="habilidades">
       <div class="container">
-        <p class="label reveal">Habilidades técnicas</p>
-        <h2 class="reveal">Ferramentas que já uso na <span class="accent">prática.</span></h2>
-        <p class="section-sub reveal">Extraídas diretamente dos meus projetos e da minha rotina de estudo.</p>
+        <p class="label reveal">03 · Habilidades</p>
+        <h2 class="reveal">Minha <span class="accent">stack.</span></h2>
 
         <div class="skills">
           <div class="skill-group reveal">
@@ -203,14 +195,14 @@
             <h3 class="label">Conceitos</h3>
             <ul class="chips">
               <li>POO</li><li>Padrão DAO</li><li>Arquitetura em camadas</li>
-              <li>CRUD</li><li>Lógica de Programação</li><li>Git e GitHub</li>
+              <li>CRUD</li><li>Lógica de Programação</li>
             </ul>
           </div>
           <div class="skill-group reveal">
             <h3 class="label">Em evolução</h3>
-            <ul class="chips">
-              <li>PostgreSQL</li><li>Docker</li><li>Inteligência Artificial</li>
-              <li>APIs REST</li><li>Teste de Software</li>
+            <ul class="chips chips-dashed">
+              <li>PostgreSQL</li><li>Inteligência Artificial</li>
+              <li>APIs REST</li><li>Spring Boot</li><li>Git e GitHub</li>
             </ul>
           </div>
         </div>
@@ -220,44 +212,13 @@
     <!-- =============== 7. PROJETOS =============== -->
     <section class="section" id="projetos">
       <div class="container">
-        <p class="label reveal">Projetos</p>
-        <h2 class="reveal">Direto do meu <span class="accent">GitHub.</span></h2>
-        <p class="section-sub reveal">Repositórios praticando lógica, POO e organização em camadas. Filtre por linguagem.</p>
+        <p class="label reveal">04 · Projetos</p>
+        <h2 class="reveal">O que eu já <span class="accent">construí.</span></h2>
 
-        <!-- Barra de filtros: os botões são criados pelo script.js a partir das linguagens dos projetos -->
-        <div class="filter-bar reveal" id="filterBar" role="group" aria-label="Filtrar projetos por linguagem"></div>
-
-        <!-- Grid de projetos: os cards são criados pelo script.js -->
-        <div class="project-grid" id="projectGrid" aria-live="polite">
+        <!-- Filtro gerado automaticamente pelo script.js -->
+        <div class="filters reveal" id="filtros" role="group" aria-label="Filtrar projetos por linguagem"></div>
+        <div class="projects" id="lista-projetos" aria-live="polite">
           <p class="muted">Carregando projetos…</p>
-        </div>
-
-        <!-- Painel de estatísticas do GitHub -->
-        <div class="gh-panel reveal">
-          <div class="gh-head">
-            <h3>Estatísticas do GitHub <span class="badge-live" data-live hidden>ao vivo</span></h3>
-            <p>Atualizado automaticamente a partir do perfil <a href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener">@vinnyrocha-dev</a></p>
-          </div>
-
-          <ul class="gh-stats">
-            <li><span class="gh-num" data-gh="public_repos">…</span><span class="gh-label">repositórios</span></li>
-            <li><span class="gh-num" data-gh="followers">…</span><span class="gh-label">seguidores</span></li>
-            <li><span class="gh-num" data-gh="following">…</span><span class="gh-label">seguindo</span></li>
-            <li><span class="gh-num" data-gh="public_gists">…</span><span class="gh-label">gists</span></li>
-          </ul>
-
-          <!-- Imagens do github-readme-stats. As cores (4D8DFF / EDF1F7) são as do tema escuro.
-               O repositório do próprio site fica fora do gráfico de linguagens (exclude_repo),
-               senão o HTML/CSS/JS do portfólio apareceria como linguagem principal.
-               Se o serviço estiver fora do ar, o script.js esconde a imagem que falhar. -->
-          <div class="gh-cards">
-            <img class="gh-card-img" loading="lazy" width="495" height="195"
-                 src="https://github-readme-stats.vercel.app/api?username=vinnyrocha-dev&amp;show_icons=true&amp;theme=transparent&amp;title_color=4D8DFF&amp;icon_color=4D8DFF&amp;text_color=EDF1F7&amp;hide_border=true"
-                 alt="Estatísticas do GitHub de vinnyrocha-dev: estrelas, commits, pull requests e issues">
-            <img class="gh-card-img" loading="lazy" width="350" height="165"
-                 src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinnyrocha-dev&amp;exclude_repo=vinnyrocha-dev.github.io&amp;layout=compact&amp;theme=transparent&amp;title_color=4D8DFF&amp;text_color=EDF1F7&amp;hide_border=true"
-                 alt="Linguagens mais usadas nos repositórios de vinnyrocha-dev">
-          </div>
         </div>
       </div>
     </section>
@@ -265,17 +226,15 @@
     <!-- =============== 8. CONTATO =============== -->
     <section class="section" id="contato">
       <div class="container">
-        <div class="contact-box reveal">
-          <p class="label">Contato</p>
-          <h2>Vamos <span class="accent">conversar?</span></h2>
-          <p class="contact-text">Aberto a oportunidades de estágio em desenvolvimento. Confira meus projetos ou entre em contato pelas redes abaixo.</p>
+        <p class="label reveal">05 · Contato</p>
+        <h2 class="reveal">Vamos <span class="accent">conversar?</span></h2>
+        <p class="section-sub reveal">Estou em busca do meu primeiro estágio. Se tiver uma vaga ou quiser trocar uma ideia, me chame.</p>
 
-          <div class="contact-btns">
-            <a class="btn btn-primary" href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener">GitHub →</a>
-            <a class="btn btn-outline" href="https://www.linkedin.com/in/vinipache/" target="_blank" rel="noopener">LinkedIn →</a>
-            <a class="btn btn-outline" href="mailto:viniciusgp45@gmail.com">E-mail →</a>
-          </div>
-        </div>
+        <ul class="contact-list">
+          <li class="reveal"><a href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener"><span class="label">GitHub</span><span class="contact-val">vinnyrocha-dev</span><span class="arrow" aria-hidden="true">→</span></a></li>
+          <li class="reveal"><a href="https://www.linkedin.com/in/vinipache/" target="_blank" rel="noopener"><span class="label">LinkedIn</span><span class="contact-val">in/vinipache</span><span class="arrow" aria-hidden="true">→</span></a></li>
+          <li class="reveal"><a href="mailto:viniciusgp45@gmail.com"><span class="label">E-mail</span><span class="contact-val">viniciusgp45@gmail.com</span><span class="arrow" aria-hidden="true">→</span></a></li>
+        </ul>
       </div>
     </section>
   </main>
@@ -290,23 +249,7 @@
   <!-- =============== 10. RODAPÉ =============== -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-top">
-        <div class="footer-cta">
-          <h2>Vamos construir algo incrível?</h2>
-          <p>Estou disponível para oportunidades de estágio, projetos e novos desafios.</p>
-        </div>
-        <div class="footer-contact">
-          <a class="footer-mail" href="mailto:viniciusgp45@gmail.com">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3l-8 4.9z"/></svg>
-            viniciusgp45@gmail.com
-          </a>
-          <div class="footer-social">
-            <a class="round-btn" href="https://github.com/vinnyrocha-dev" target="_blank" rel="noopener" aria-label="GitHub (abre em nova aba)"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
-            <a class="round-btn" href="https://www.linkedin.com/in/vinipache/" target="_blank" rel="noopener" aria-label="LinkedIn (abre em nova aba)"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zm7 0h3.8v1.5h.1c.5-1 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v6.4h-4v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.8h-4z"/></svg></a>
-          </div>
-        </div>
-      </div>
-      <p class="footer-copy">Feito por <span class="accent">Vinicius Pacheco</span> · 2026</p>
+      <p>Feito por Vinicius Rocha Pacheco · 2026</p>
     </div>
   </footer>
 
